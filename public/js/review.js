@@ -1,5 +1,4 @@
 /* Mock Buy Now  Button Listner */
-var userLanguage = 'en-DE';
 function checkout(){
    
     var resultModal = document.getElementById("resultModal");
@@ -23,16 +22,12 @@ function checkout(){
         if (errorMessage === "payment_source_info_cannot_be_verified@example.com"){
             orderStatus.innerHTML = "There was a problem submitting your Order &#128680;"
             paypal.Legal({
-                legalLocale : userLanguage,
-                buyerCountry : 'de',
                 fundingSource : 'PUI',
                 errorCode: 'PAYMENT_SOURCE_INFO_CANNOT_BE_VERIFIED'
             }).render('#paypal-error-container')
         } else if (errorMessage === "payment_source_declined_by_processor@example.com"){
             orderStatus.innerHTML = "There was a problem submitting your Order &#128680;"
             paypal.Legal({
-                legalLocale : userLanguage,
-                buyerCountry : 'de',
                 fundingSource : 'PUI',
                 errorCode: 'PAYMENT_SOURCE_DECLINED_BY_PROCESSOR'
             }).render('#paypal-error-container')
@@ -72,8 +67,6 @@ function showLoading(){
 /* On Page Load*/
 (function ()  {
     paypal.Legal({
-        legalLocale: userLanguage,
-        buyerCountry: "de",
         fundingSource: "PUI",
       })
       .render("#paypal-legal-container");
@@ -85,8 +78,9 @@ function showLoading(){
         document.getElementById("myBar").onclick = function() {
             modal.style.display = "none";
           }
-        span.onclick = function() {
+        span.onclick = function(event) {
           modal.style.display = "none";
+          event.stopPropagation();
         }
       
         // When the user clicks anywhere outside of the modal, close it
@@ -97,16 +91,6 @@ function showLoading(){
         }
 })();
 
-function onLanguageChange(event){
-    if(event.target.value)
-        userLanguage = event.target.value;
-    else
-        userLanguage = 'en-DE';
-
-        paypal.Legal({
-            legalLocale: userLanguage,
-            buyerCountry: "de",
-            fundingSource: "PUI",
-          })
-          .render("#paypal-legal-container");
+function onLanguageChange(){
+       document.getElementById("languageForm").submit();
 }

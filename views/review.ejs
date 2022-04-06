@@ -15,7 +15,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     
-    <script src="https://localhost.paypal.com:8443/sdk/js?client-id=B_AIHOqh5hcwGhwwbG8OBqaPaPAIBMwB26mFCFbgna2J76sn_Dg5eH7QbbzxqOY5Bhunuey7D_laCs3dGE&components=legal&debug=true"></script>
+    <!-- <script src="https://localhost.paypal.com:8443/sdk/js?client-id=B_AIHOqh5hcwGhwwbG8OBqaPaPAIBMwB26mFCFbgna2J76sn_Dg5eH7QbbzxqOY5Bhunuey7D_laCs3dGE&components=legal&buyer-country=DE&locale=de_DE&debug=true"></script> -->
+    <script src="<%=scriptTarget%>"></script>
   </head>
 
   <body>
@@ -95,19 +96,23 @@
           Order Total <span class="price" style="color: black"><b>$40</b></span>
         </p>
         <!-- Customization Block  -->
+       
         <button class="accordion" style="margin-top: 9em">
           Customization Options
         </button>
+        
         <div class="panel">
           <div class="languageSelection">
             <div class="select">
               <p>Language Selection for Legal Text</p>
-              <select id="language-select" onchange="onLanguageChange(event)">
+              <form id ="languageForm" action="review" method="POST">
+              <select id="languageSelection" name="languageSelection" onchange="onLanguageChange()">
                 <option selected value="">Choose Language</option>
-                <option value="de-DE">German</option>
-                <option value="en-DE">English</option>
+                <option value="de_DE">German</option>
+                <option value="en_DE">English</option>
               </select>
               <span class="focus"></span>
+            </form>
             </div>
           </div>
           <div class="emailSelection">
@@ -130,6 +135,7 @@
             </div>
           </div>
         </div>
+    
       </div>
       <!-- The Modal -->
       <div id="resultModal" class="modal">
