@@ -1,0 +1,173 @@
+.wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  font-weight: bold;
+  text-align: center;
+  height: 900px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.wrapper > * {
+  padding: 10px;
+  flex: 1 100%;
+}
+
+.header {
+  background: #04aa6d;
+}
+
+.footer {
+  background: #dae4e0;
+  color: black;
+  display: flex;
+  justify-content: space-evenly;
+}
+.footer > span {
+  padding: 1em;
+}
+
+.main {
+  text-align: left;
+  background: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  min-height: 90%;
+}
+
+form > p {
+  margin: 2em;
+}
+
+.aside {
+  background: #e5e5e5;
+}
+
+@media all and (min-width: 600px) {
+  .aside {
+    flex: 1 0 0;
+  }
+}
+
+@media all and (min-width: 800px) {
+  .main {
+    flex: 1 0px;
+  }
+  .header {
+    order: 1;
+  }
+  .aside {
+    order: 3;
+  }
+  .main {
+    order: 2;
+  }
+  .footer {
+    order: 4;
+  }
+}
+
+body {
+  padding: 2em;
+}
+
+/* Navigation CSS*/
+
+.navigation {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+
+  list-style: none;
+  margin: 0;
+  background: #04aa6d;
+}
+
+.navigation a {
+  text-decoration: none;
+  display: block;
+  padding: 1em;
+  color: white;
+}
+
+.navigation a:hover {
+  background: #3a8368;
+}
+
+/* Form CSS */
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+.address,
+.contact {
+  display: flex;
+  flex-direction: column;
+  max-height: 200px;
+  justify-content: space-evenly;
+}
+.contact li,
+.address li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  min-width: 200px;
+}
+.contact li p,
+.address li p {
+  flex: 1 0 100px;
+  max-width: 220px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+  width: 80%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: rgb(247, 243, 243);
+}
+
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  background-color: #04aa6d;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+/* media css */
+
+@media all and (max-width: 800px) {
+  .navigation {
+    justify-content: space-around;
+  }
+}
+
+@media all and (max-width: 600px) {
+  .navigation {
+    flex-flow: column wrap;
+    padding: 0;
+  }
+  .navigation a {
+    text-align: center;
+    padding: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .navigation li:last-of-type a {
+    border-bottom: none;
+  }
+}

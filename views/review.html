@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>PUI Example</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/checkout.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    
+    <script src="https://localhost.paypal.com:8443/sdk/js?client-id=B_AIHOqh5hcwGhwwbG8OBqaPaPAIBMwB26mFCFbgna2J76sn_Dg5eH7QbbzxqOY5Bhunuey7D_laCs3dGE&components=legal&debug=true"></script>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <ul class="navigation">
+          <li>
+            <a href="./contact.html"
+              ><i class="fa fa-home fa-lg" aria-hidden="true"></i
+            ></a>
+          </li>
+          <li><a href="#">Shop</a></li>
+          <li><a href="#">Learn</a></li>
+          <li><a href="#">Cart</a></li>
+        </ul>
+      </header>
+      <article class="main" style="justify-content: space-between">
+        <div>
+          <ul class="contact">
+            <p><u>Contact</u></p>
+
+            <li>Emma Van de Berg</li>
+            <li>emma.vandeberg@mail.com</li>
+            <li>+49 30 23003314</li>
+          </ul>
+        </div>
+        <div>
+          <ul class="contact">
+            <p><u>Ship To</u></p>
+
+            <li>Emma Van de Berg</li>
+            <li>Kurfürstendamm 231</li>
+            <li>10719 Berlin, Germany</li>
+            <br />
+            <li>emma.vandeberg@mail.com</li>
+            <li>5 - 7 Business Days: Free</li>
+          </ul>
+        </div>
+        <div>
+          <ul class="contact">
+            <p><u>Payment</u></p>
+            <li>Pay Upon Invoice</li>
+          </ul>
+        </div>
+        <div>
+          <div id="paypal-legal-container"></div>
+          <input type="button" value="BUY NOW" class="btn" onclick="checkout()"/>
+        </div>
+      </article>
+      <div class="aside" style="text-align: left">
+        <h1>
+          Cart
+          <span class="price" style="color: black">
+            <i class="fa fa-shopping-cart"></i>
+            <b>1</b>
+          </span>
+        </h1>
+        <p><a href="#">Drip Coffee Funnel</a> <span class="price">$38</span></p>
+        <img
+          src="./images/PourOverCoffee.png"
+          width="150"
+          height="150"
+          alt="Drip Coffee Funnel"
+        />
+        <hr />
+        <p>
+          Subtotal <span class="price" style="color: black"><b>$38</b></span>
+        </p>
+        <p>
+          Shipping Fee
+          <span class="price" style="color: black"><b>Free</b></span>
+        </p>
+        <p>
+          Tax <span class="price" style="color: black"><b>$2</b></span>
+        </p>
+        <p>
+          Order Total <span class="price" style="color: black"><b>$40</b></span>
+        </p>
+        <!-- Customization Block  -->
+        <button class="accordion" style="margin-top: 9em">
+          Customization Options
+        </button>
+        <div class="panel">
+          <div class="languageSelection">
+            <div class="select">
+              <p>Language Selection for Legal Text</p>
+              <select id="language-select" onchange="onLanguageChange(event)">
+                <option selected value="">Choose Language</option>
+                <option value="de-DE">German</option>
+                <option value="en-DE">English</option>
+              </select>
+              <span class="focus"></span>
+            </div>
+          </div>
+          <div class="emailSelection">
+            <div class="select">
+              <p>Error Scenario</p>
+              <select id="email-select" >
+                <option selected value="">No Error</option>
+                <option
+                  value="payment_source_info_cannot_be_verified@example.com"
+                >
+                  PAYMENT_SOURCE_INFO_CANNOT_BE_VERIFIED
+                </option>
+                <option
+                  value="payment_source_declined_by_processor@example.com"
+                >
+                  PAYMENT_SOURCE_DECLINED_BY_PROCESSOR
+                </option>
+              </select>
+              <span class="focus"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- The Modal -->
+      <div id="resultModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p id="orderStatus" >Submitting the Order</p>
+          <div id="myProgress">
+            <div id="myBar"></div>
+          </div>
+          <br/>
+          <div id="paypal-error-container"></div>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <span style="flex-grow: 2; text-align: left"
+          >©2021 All rights reserved.</span
+        >
+        <span>Language</span>
+        <span>Terms of use</span>
+        <span>Privacy</span>
+      </footer>
+    </div>
+  </body>
+  <script>
+    /* Accordion Functionality */
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+      });
+    }
+    /* Accordion Functionality */
+  </script>
+  <script src="./js/review.js"></script>
+</html>

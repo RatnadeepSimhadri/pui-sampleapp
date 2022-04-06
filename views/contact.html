@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>PUI Example</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/checkout.css" />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <ul class="navigation">
+          <li><a href="./contact.html"><i class="fa fa-home fa-lg" aria-hidden="true"></i></a></li>
+          <li><a href="#">Shop</a></li>
+          <li><a href="#">Learn</a></li>
+          <li><a href="#">Cart</a></li>
+          
+        </ul>
+      </header>
+      <article class="main">
+        <form action="/checkout.html"> 
+          <ul class="contact" style="padding-top: 5em;">
+            <p>Contact</p>
+            <li>
+              <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+            </li>
+            <li>
+              <input type="text" id="name" placeholder="Emma Van de Berg" style="width: 80%;">
+            </li>
+            <li>
+              <label for="email"><i class="fa fa-envelope"></i> Email</label>
+            </li>
+            <li>
+              <input type="email" id="email" placeholder="emma.vandeberg@mail.com">
+            </li>
+            <li>
+              <label for="phone"><i class="fa fa-phone"></i> Phone Number</label>
+            </li>
+            <li>
+              <input type="tel" id="phone" placeholder="Phone Number (optional)">
+            </li>
+          </ul>
+          <input type="submit" value="CONTINUE" class="btn" />
+        </form>
+      </article>
+      <div class="aside" style="text-align: left;">
+        <h1>
+          Cart
+          <span class="price" style="color: black">
+            <i class="fa fa-shopping-cart"></i>
+            <b>1</b>
+          </span>
+        </h1>
+        <p><a href="#">Drip Coffee Funnel</a> <span class="price">$38</span></p>
+        <img src="./images/PourOverCoffee.png" width="150" height="150" alt="Drip Coffee Funnel">
+        <p>
+          Subtotal <span class="price" style="color: black"><b>$38</b></span>
+        </p>
+        <p>
+          Shipping Fee
+          <span class="price" style="color: black"><b>Free</b></span>
+        </p>
+        <p>
+          Tax <span class="price" style="color: black"><b>$2</b></span>
+        </p>
+        <p>
+          Order Total <span class="price" style="color: black"><b>$40</b></span>
+        </p>
+      </div>
+      <footer class="footer">
+        <span style="flex-grow: 2; text-align: left;">©2021 All rights reserved.</span>
+        <span>Language</span>
+        <span>Terms of use</span>
+        <span>Privacy</span>
+      </footer>
+    </div>
+  </body>
+</html>
