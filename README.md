@@ -11,7 +11,7 @@ Integration
 
 ```html
 
-<script src="https://localhost.paypal.com:8443/sdk/js?client-id=test&components=legal"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=test&components=legal"></script>
 
 <!-- Place the container div right above the final Checkout Button -->
 <div id="paypal-legal-container"></div> 
