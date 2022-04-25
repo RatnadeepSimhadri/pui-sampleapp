@@ -1,6 +1,5 @@
 /* Mock Buy Now  Button Listner */
 function checkout(){
-   
     var resultModal = document.getElementById("resultModal");
     var orderStatus = document.getElementById("orderStatus");
     var errorType = document.getElementById("email-select");
@@ -22,13 +21,13 @@ function checkout(){
         if (errorMessage === "payment_source_info_cannot_be_verified@example.com"){
             orderStatus.innerHTML = "There was a problem submitting your Order &#128680;"
             paypal.Legal({
-                fundingSource : 'PUI',
+                fundingSource : paypal.FUNDING.PAY_UPON_INVOICE,
                 errorCode: 'PAYMENT_SOURCE_INFO_CANNOT_BE_VERIFIED'
             }).render('#paypal-error-container')
         } else if (errorMessage === "payment_source_declined_by_processor@example.com"){
             orderStatus.innerHTML = "There was a problem submitting your Order &#128680;"
             paypal.Legal({
-                fundingSource : 'PUI',
+                fundingSource : paypal.FUNDING.PAY_UPON_INVOICE,
                 errorCode: 'PAYMENT_SOURCE_DECLINED_BY_PROCESSOR'
             }).render('#paypal-error-container')
             
@@ -66,8 +65,9 @@ function showLoading(){
 
 /* On Page Load*/
 (function ()  {
+  
     paypal.Legal({
-        fundingSource: "PUI",
+        fundingSource: paypal.FUNDING.PAY_UPON_INVOICE,
       })
       .render("#paypal-legal-container");
       

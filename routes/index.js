@@ -17,7 +17,7 @@ router.post('/review', function(req, res, next) {
   let sdkHost = process.env['SDK_HOST'] || `localhost.paypal.com:8443`;
   // let stageTarget = 'te-alm-66536402202444903746246.qa.paypal.com'
   res.render('review',{
-    scriptTarget: `https://${sdkHost}/sdk/js?client-id=B_AIHOqh5hcwGhwwbG8OBqaPaPAIBMwB26mFCFbgna2J76sn_Dg5eH7QbbzxqOY5Bhunuey7D_laCs3dGE&components=legal&buyer-country=DE&locale=${language}&debug=true`
+    scriptTarget: `https://${sdkHost}/sdk/js?client-id=B_AIHOqh5hcwGhwwbG8OBqaPaPAIBMwB26mFCFbgna2J76sn_Dg5eH7QbbzxqOY5Bhunuey7D_laCs3dGE&components=legal&buyer-country=DE&locale=${language}`
   });
 });
 
@@ -28,7 +28,7 @@ router.get('/review', function(req, res, next) {
   let sdkHost = process.env['SDK_HOST'] || `localhost.paypal.com:8443`;
   // let stageTarget = 'te-alm-66536402202444903746246.qa.paypal.com'
   res.render('review',{
-    scriptTarget: `https://${sdkHost}/sdk/js?client-id=B_AIHOqh5hcwGhwwbG8OBqaPaPAIBMwB26mFCFbgna2J76sn_Dg5eH7QbbzxqOY5Bhunuey7D_laCs3dGE&components=legal&buyer-country=DE&locale=${language}&debug=true`
+    scriptTarget: `https://${sdkHost}/sdk/js?client-id=B_AIHOqh5hcwGhwwbG8OBqaPaPAIBMwB26mFCFbgna2J76sn_Dg5eH7QbbzxqOY5Bhunuey7D_laCs3dGE&components=legal`
   });
 });
 
