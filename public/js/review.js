@@ -22,13 +22,13 @@ function checkout(){
             orderStatus.innerHTML = "There was a problem submitting your Order &#128680;"
             paypal.Legal({
                 fundingSource : paypal.FUNDING.PAY_UPON_INVOICE,
-                errorCode: 'PAYMENT_SOURCE_INFO_CANNOT_BE_VERIFIED'
+                errorCode: paypal.Legal.ERROR_CODE.PAYMENT_SOURCE_INFO_CANNOT_BE_VERIFIED
             }).render('#paypal-error-container')
         } else if (errorMessage === "payment_source_declined_by_processor@example.com"){
             orderStatus.innerHTML = "There was a problem submitting your Order &#128680;"
             paypal.Legal({
                 fundingSource : paypal.FUNDING.PAY_UPON_INVOICE,
-                errorCode: 'PAYMENT_SOURCE_DECLINED_BY_PROCESSOR'
+                errorCode: paypal.Legal.ERROR_CODE.PAYMENT_SOURCE_DECLINED_BY_PROCESSOR
             }).render('#paypal-error-container')
             
         } else 
