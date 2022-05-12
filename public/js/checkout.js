@@ -3,10 +3,10 @@ function radioOnChange(e){
     var cardFieldsContainer = document.getElementsByClassName("cardfields")[0];
     var puiFieldsContainer = document.getElementsByClassName("puifields")[0];
 
-    if(value == "pui"){
+    if(value == "Pay Upon Invoice"){
         cardFieldsContainer.style.display = 'none';
         puiFieldsContainer.style.display = 'block';
-    } else if(value === "paypal"){
+    } else if(value === "paypal" || value === "boleto"){
         cardFieldsContainer.style.display = 'none';
         puiFieldsContainer.style.display = 'none';
     } else if(value === "card"){
@@ -14,3 +14,13 @@ function radioOnChange(e){
         puiFieldsContainer.style.display = 'none';
     }
 }
+
+/* On Page Load*/
+(function ()  {
+  
+paypal
+  .Marks({
+    fundingSource: paypal.FUNDING.BOLETO,
+  })
+  .render('#boleto-mark')
+})();

@@ -21,13 +21,13 @@ function checkout(){
         if (errorMessage === "payment_source_info_cannot_be_verified@example.com"){
             orderStatus.innerHTML = "There was a problem submitting your Order &#128680;"
             paypal.Legal({
-                fundingSource : paypal.FUNDING.PAY_UPON_INVOICE,
+                fundingSource : paypal.Legal.FUNDING.PAY_UPON_INVOICE,
                 errorCode: paypal.Legal.ERROR_CODE.PAYMENT_SOURCE_INFO_CANNOT_BE_VERIFIED
             }).render('#paypal-error-container')
         } else if (errorMessage === "payment_source_declined_by_processor@example.com"){
             orderStatus.innerHTML = "There was a problem submitting your Order &#128680;"
             paypal.Legal({
-                fundingSource : paypal.FUNDING.PAY_UPON_INVOICE,
+                fundingSource : paypal.Legal.FUNDING.PAY_UPON_INVOICE,
                 errorCode: paypal.Legal.ERROR_CODE.PAYMENT_SOURCE_DECLINED_BY_PROCESSOR
             }).render('#paypal-error-container')
             
@@ -65,9 +65,21 @@ function showLoading(){
 
 /* On Page Load*/
 (function ()  {
-  
+    var paymentOption = document.getElementById("paymentOption").innerHTML 
+    let fundingSource = paypal.Legal.FUNDING.PAY_UPON_INVOICE;
+
+    switch(paymentOption){
+      case 'PayUponInvoice':{
+        fundingSource = paypal.Legal.FUNDING.PAY_UPON_INVOICE;
+        break;
+      }
+      case 'boleto':{
+        fundingSource = paypal.Legal.FUNDING.BOLETO;
+        break;
+      }
+    }
     paypal.Legal({
-        fundingSource: paypal.FUNDING.PAY_UPON_INVOICE,
+        fundingSource:fundingSource,
       })
       .render("#paypal-legal-container");
       
@@ -92,5 +104,8 @@ function showLoading(){
 })();
 
 function onLanguageChange(){
-       document.getElementById("languageForm").submit();
+      var paymentOption = document.getElementById("paymentOption").innerHTML;
+      var languageForm = document.getElementById("languageForm");
+      languageForm.elements['radio'].value = paymentOption
+      languageForm.submit();
 }

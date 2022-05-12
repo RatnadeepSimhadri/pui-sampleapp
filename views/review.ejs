@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>PUI Example</title>
+    <title>Checkout Example</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
@@ -24,7 +24,7 @@
       <header class="header">
         <ul class="navigation">
           <li>
-            <a href="./contact.html"
+            <a href="./"
               ><i class="fa fa-home fa-lg" aria-hidden="true"></i
             ></a>
           </li>
@@ -58,7 +58,7 @@
         <div>
           <ul class="contact">
             <p><u>Payment</u></p>
-            <li>Pay Upon Invoice</li>
+            <li id="paymentOption"><%= paymentOption %></li>
           </ul>
         </div>
         <div>
@@ -110,6 +110,12 @@
                 <option selected value="">Choose Language</option>
                 <option value="de_DE">German</option>
                 <option value="en_DE">English</option>
+                <option value="pt_BR">Brazilian Portugese</option>
+              </select>
+              <select id="paymentSelection" name="radio" onchange="onLanguageChange()">
+                <option selected value="">Choose Payment Option</option>
+                <option value="PayUponInvoice">PayUponInvoice</option>
+                <option value="boleto">Boleto</option>
               </select>
               <span class="focus"></span>
             </form>
