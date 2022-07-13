@@ -16,11 +16,11 @@ function radioOnChange(e){
 }
 
 /* On Page Load*/
-(function ()  {
+// (function ()  {
   
-paypal
-  .Marks({
-    fundingSource: paypal.FUNDING.BOLETO,
-  })
-  .render('#boleto-mark')
-})();
+// paypal
+//   .Marks({
+//     fundingSource: paypal.FUNDING.BOLETO,
+//   })
+//   .render('#boleto-mark')
+// })();

@@ -10,9 +10,9 @@ router.post('/checkout', function(req, res, next) {
   let language = 'en_BR';
   if(req.body.languageSelection)
     language = req.body.languageSelection;
-  let sdkHost = process.env['SDK_HOST'] || `localhost.paypal.com:8443`;
+  let sdkHost = process.env['SDK_HOST'] || `www.paypal.com`;
   res.render('checkout',{
-    scriptTarget: `https://${sdkHost}/sdk/js?client-id=AWlIT0NTvtIe8FEoLoVz9N1DjFwY3SJZ8gF-Q6w4UjbwXsB6bfFlMAJUlab6AeTMfErhsTL7PRYCk88w&components=marks&buyer-country=BR&locale=${language}`
+    scriptTarget: `https://${sdkHost}/sdk/js?client-id=test&components=marks&buyer-country=BR&locale=${language}`
   });
 });
 
@@ -35,10 +35,10 @@ router.post('/review', function(req, res, next) {
   
   if(req.body.languageSelection)
    language = req.body.languageSelection;
-  let sdkHost = process.env['SDK_HOST'] || `localhost.paypal.com:8443`;
+  let sdkHost = process.env['SDK_HOST'] || `www.paypal.com`;
   // let stageTarget = 'te-alm-66536402202444903746246.qa.paypal.com'
   res.render('review',{
-    scriptTarget: `https://${sdkHost}/sdk/js?client-id=B_AIHOqh5hcwGhwwbG8OBqaPaPAIBMwB26mFCFbgna2J76sn_Dg5eH7QbbzxqOY5Bhunuey7D_laCs3dGE&components=legal&buyer-country=${buyerCountry}&locale=${language}`,
+    scriptTarget: `https://${sdkHost}/sdk/js?client-id=test&components=legal&buyer-country=${buyerCountry}&locale=${language}`,
     paymentOption: paymentOption
   });
 });
@@ -47,10 +47,10 @@ router.get('/review', function(req, res, next) {
   let language = 'en_DE';
   if(req.body.languageSelection)
    language = req.body.languageSelection;
-  let sdkHost = process.env['SDK_HOST'] || `localhost.paypal.com:8443`;
+  let sdkHost = process.env['SDK_HOST'] || `www.paypal.com`;
   // let stageTarget = 'te-alm-66536402202444903746246.qa.paypal.com'
   res.render('review',{
-    scriptTarget: `https://${sdkHost}/sdk/js?client-id=B_AIHOqh5hcwGhwwbG8OBqaPaPAIBMwB26mFCFbgna2J76sn_Dg5eH7QbbzxqOY5Bhunuey7D_laCs3dGE&components=legal`
+    scriptTarget: `https://${sdkHost}/sdk/js?client-id=test&components=legal`
   });
 });
 
