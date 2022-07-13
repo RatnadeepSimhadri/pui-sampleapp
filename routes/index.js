@@ -12,7 +12,7 @@ router.post('/checkout', function(req, res, next) {
     language = req.body.languageSelection;
   let sdkHost = process.env['SDK_HOST'] || `www.paypal.com`;
   res.render('checkout',{
-    scriptTarget: `https://${sdkHost}/sdk/js?client-id=test&components=marks`
+    scriptTarget: `https://${sdkHost}/sdk/js?client-id=test&components=marks&buyer-country=BR&locale=${language}`
   });
 });
 
@@ -38,7 +38,7 @@ router.post('/review', function(req, res, next) {
   let sdkHost = process.env['SDK_HOST'] || `www.paypal.com`;
   // let stageTarget = 'te-alm-66536402202444903746246.qa.paypal.com'
   res.render('review',{
-    scriptTarget: `https://${sdkHost}/sdk/js?client-id=test&components=legal`,
+    scriptTarget: `https://${sdkHost}/sdk/js?client-id=test&components=legal&buyer-country=${buyerCountry}&locale=${language}`,
     paymentOption: paymentOption
   });
 });
