@@ -66,15 +66,15 @@ function showLoading(){
 /* On Page Load*/
 (function ()  {
     var paymentOption = document.getElementById("paymentOption").innerHTML 
-    let fundingSource = paypal.Legal.FUNDING.PAY_UPON_INVOICE;
+    let fundingSource = paymentOption;
 
     switch(paymentOption){
       case 'PayUponInvoice':{
         fundingSource = paypal.Legal.FUNDING.PAY_UPON_INVOICE;
         break;
       }
-      case 'boleto':{
-        fundingSource = paypal.Legal.FUNDING.BOLETO;
+      case 'boletobancario':{
+        fundingSource = paypal.Legal.FUNDING.BOLETOBANCARIO;
         break;
       }
     }
@@ -106,6 +106,5 @@ function showLoading(){
 function onLanguageChange(){
       var paymentOption = document.getElementById("paymentOption").innerHTML;
       var languageForm = document.getElementById("languageForm");
-      languageForm.elements['radio'].value = paymentOption
       languageForm.submit();
 }

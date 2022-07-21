@@ -106,18 +106,20 @@
             <div class="select">
               <p>Language Selection for Legal Text</p>
               <form id ="languageForm" action="changepreferences" method="POST">
-              <select id="languageSelection" name="languageSelection" onchange="onLanguageChange()">
+              <select id="languageSelection" name="languageSelection">
                 <option selected value="">Choose Language</option>
                 <option value="de_DE">German</option>
-                <option value="en_DE">English</option>
+                <option value="en_DE">German English</option>
                 <option value="pt_BR">Brazilian Portugese</option>
+                <option value="en_US">US English</option>
               </select>
-              <select id="paymentSelection" name="radio" onchange="onLanguageChange()">
+              <select id="paymentSelection" name="paymentSelection">
                 <option selected value="">Choose Payment Option</option>
                 <option value="PayUponInvoice">PayUponInvoice</option>
-                <option value="boleto">Boleto</option>
+                <option value="boletobancario">Boleto</option>
               </select>
               <span class="focus"></span>
+              <input type="submit" value="CHANGE" class="btn" />
             </form>
             </div>
           </div>

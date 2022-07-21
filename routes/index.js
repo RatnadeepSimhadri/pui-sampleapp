@@ -7,76 +7,53 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/checkout', function(req, res, next) {
-  let language = 'en_BR';
+
   if(req.body.languageSelection)
     language = req.body.languageSelection;
-  let sdkHost = process.env['SDK_HOST'] || `www.paypal.com`;
+    let sdkHost = process.env['SDK_HOST'] || `localhost.paypal.com:8443`;
+    let clientID = process.env['CLIENT_ID'] || `AWlIT0NTvtIe8FEoLoVz9N1DjFwY3SJZ8gF-Q6w4UjbwXsB6bfFlMAJUlab6AeTMfErhsTL7PRYCk88w`;
   res.render('checkout',{
-    scriptTarget: `https://${sdkHost}/sdk/js?client-id=test&components=marks&buyer-country=BR&locale=${language}`
+    scriptTarget: `https://${sdkHost}/sdk/js?client-id=${clientID}&components=marks&debug=true`
   });
 });
 
 router.post('/review', function(req, res, next) {
-  let paymentOption = req.body.radio;
-  let language = 'en_DE';
-  let buyerCountry = 'DE'
-  switch(paymentOption){
-    case 'PayUponInvoice':{
-        language = 'en_DE'
-        buyerCountry = 'DE'
-        break;
-    }
-    case 'boleto':{
-      language = 'en_BR'
-      buyerCountry = 'BR'
-      break;
-    }
-  }
-  
-  if(req.body.languageSelection)
-   language = req.body.languageSelection;
-  let sdkHost = process.env['SDK_HOST'] || `www.paypal.com`;
-  // let stageTarget = 'te-alm-66536402202444903746246.qa.paypal.com'
+  let paymentOption = req.body.paymentSelection;
+  let language = req.body.languageSelection;
+ 
+
+   let sdkHost = process.env['SDK_HOST'] || `localhost.paypal.com:8443`;
+   let clientID = process.env['CLIENT_ID'] || `AWlIT0NTvtIe8FEoLoVz9N1DjFwY3SJZ8gF-Q6w4UjbwXsB6bfFlMAJUlab6AeTMfErhsTL7PRYCk88w`;
   res.render('review',{
-    scriptTarget: `https://${sdkHost}/sdk/js?client-id=test&components=legal`,
+    scriptTarget: `https://${sdkHost}/sdk/js?client-id=${clientID}&components=legal&debug=true`,
     paymentOption: paymentOption
   });
 });
 
 router.get('/review', function(req, res, next) {
-  let language = 'en_DE';
-  if(req.body.languageSelection)
-   language = req.body.languageSelection;
-  let sdkHost = process.env['SDK_HOST'] || `www.paypal.com`;
+
+  let sdkHost = process.env['SDK_HOST'] || `localhost.paypal.com:8443`;
+  let clientID = process.env['CLIENT_ID'] || `AWlIT0NTvtIe8FEoLoVz9N1DjFwY3SJZ8gF-Q6w4UjbwXsB6bfFlMAJUlab6AeTMfErhsTL7PRYCk88w`;
+
   // let stageTarget = 'te-alm-66536402202444903746246.qa.paypal.com'
   res.render('review',{
-    scriptTarget: `https://${sdkHost}/sdk/js?client-id=test&components=legal`
+    scriptTarget: `https://${sdkHost}/sdk/js?client-id=${clientID}&components=legal&debug=true`
   });
 });
 
 router.post('/changepreferences', function(req, res, next) {
-  let paymentOption = req.body.radio;
-  let language = 'en_DE';
-  let buyerCountry = 'DE'
-  switch(paymentOption){
-    case 'PayUponInvoice':{
-        language = 'en_DE'
-        buyerCountry = 'DE'
-        break;
-    }
-    case 'boleto':{
-      language = 'en_BR'
-      buyerCountry = 'BR'
-      break;
-    }
+  let paymentOption = req.body.paymentSelection;
+  let language = req.body.languageSelection;
+
+  let sdkHost = process.env['SDK_HOST'] || `localhost.paypal.com:8443`;
+  let clientID = process.env['CLIENT_ID'] || `AWlIT0NTvtIe8FEoLoVz9N1DjFwY3SJZ8gF-Q6w4UjbwXsB6bfFlMAJUlab6AeTMfErhsTL7PRYCk88w`;
+
+  let scriptTarget = `https://${sdkHost}/sdk/js?client-id=${clientID}&components=legal&debug=true`;
+  if(language){
+    scriptTarget+=`&locale=${language}`
   }
-  
-  if(req.body.languageSelection)
-   language = req.body.languageSelection;
-  let sdkHost = process.env['SDK_HOST'] || `www.paypal.com`;
-  // let stageTarget = 'te-alm-66536402202444903746246.qa.paypal.com'
   res.render('review',{
-    scriptTarget: `https://${sdkHost}/sdk/js?client-id=test&components=legal&buyer-country=${buyerCountry}&locale=${language}`,
+    scriptTarget: scriptTarget,
     paymentOption: paymentOption
   });
 });
